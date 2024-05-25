@@ -17,7 +17,7 @@ export const AuthForm = (props) => {
     e.preventDefault();
     const userData = await authorize(endpoints.auth, authData);
     if (isResponseOk(userData)) {
-      authContext.login({...userData, id: userData._id}, userData.jwt);
+      authContext.login({ ...userData, id: userData._id }, userData.jwt);
       setMessage({ status: "success", text: "Вы авторизовались!" });
     } else {
       setMessage({ status: "error", text: "Неверные почта или пароль" });
@@ -33,6 +33,7 @@ export const AuthForm = (props) => {
     }
     return () => clearTimeout(timer);
   }, [authContext.user]);
+
   return (
     <form onSubmit={handleSubmit} className={Styles["form"]}>
       <h2 className={Styles["form__title"]}>Авторизация</h2>

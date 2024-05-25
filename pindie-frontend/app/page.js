@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { endpoints } from "./api/config";
 import { Banner } from "./components/Banner/Banner";
@@ -13,14 +13,24 @@ export default function Home() {
   return (
     <main className="main">
       <Banner />
-      {
-        (popularGames && newGames) ? (
-          <>
-            <CardsListSection id="popular" title="Популярные" data={popularGames} type="slider"/>
-            <CardsListSection id="new" title="Новинки"  data={newGames} type="slider"/>
-          </>
-        ) : <Preloader />
-      }
+      {popularGames && newGames ? (
+        <>
+          <CardsListSection
+            id="popular"
+            title="Популярные"
+            data={popularGames}
+            type="slider"
+          />
+          <CardsListSection
+            id="new"
+            title="Новинки"
+            data={newGames}
+            type="slider"
+          />
+        </>
+      ) : (
+        <Preloader />
+      )}
       <Promo />
     </main>
   );
